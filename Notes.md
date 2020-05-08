@@ -14,3 +14,5 @@ which would stop annoying developers and help you find bugs.
 1. <https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world#switch>
 
 1. <https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/iteration#practice-exercises>
+
+1. https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/structs-methods-and-interfaces
