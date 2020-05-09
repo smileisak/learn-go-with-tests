@@ -1,6 +1,9 @@
 package pointers
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 // Stringer is a interface
 type Stringer interface {
@@ -15,6 +18,9 @@ type Wallet struct {
 	balance Bitcoin
 }
 
+// ErrInsufficientFunds is an error for insufficient funds in balance
+var ErrInsufficientFunds = errors.New("cannot withdraw, insufficient funds")
+
 // Deposit deposit to the wallet
 func (w *Wallet) Deposit(amount Bitcoin) {
 	w.balance += amount
@@ -26,8 +32,13 @@ func (w *Wallet) Balance() Bitcoin {
 }
 
 // Withdraw withdraw from the wallet
-func (w *Wallet) Withdraw(amount Bitcoin) {
+func (w *Wallet) Withdraw(amount Bitcoin) error {
+	if amount > w.balance {
+		return ErrInsufficientFunds
+	}
+
 	w.balance -= amount
+	return nil
 }
 
 func (b Bitcoin) String() string {

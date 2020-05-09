@@ -11,6 +11,12 @@ which would stop annoying developers and help you find bugs.
 
 1. These pointers to structs even have their own name: struct pointers and they are automatically dereferenced.
 
+1. Go copies values when you pass them to functions/methods so if you're writing a function that needs to mutate state you'll need it to take a pointer to the thing you want to change.
+
+1. The fact that Go takes a copy of values is useful a lot of the time but sometimes you won't want your system to make a copy of something, in which case you need to pass a reference. Examples could be very large data or perhaps things you intend only to have one instance of (like database connection pools).
+
+1. Errors more details: <https://dave.cheney.net/2016/04/27/dont-just-check-errors-handle-them-gracefully>
+
 ## Progression (Breakpoints)
 
 1. <https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world#writing-tests>
