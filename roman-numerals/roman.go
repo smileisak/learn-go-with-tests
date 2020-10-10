@@ -12,7 +12,8 @@ type RomanNumeral struct {
 type RomanNumerals []RomanNumeral
 
 // ValueOf return a value of a given symbol
-func (r RomanNumerals) ValueOf(symbol string) int {
+func (r RomanNumerals) ValueOf(symbols ...byte) int {
+	symbol := string(symbols)
 	for _, s := range r {
 		if s.Symbol == symbol {
 			return s.Value
@@ -21,7 +22,7 @@ func (r RomanNumerals) ValueOf(symbol string) int {
 	return 0
 }
 
-var allRomanNumerals = []RomanNumeral{
+var allRomanNumerals = RomanNumerals{
 	{1000, "M"},
 	{900, "CM"},
 	{500, "D"},
@@ -54,5 +55,25 @@ func ConvertToRoman(arabic int) string {
 //ConvertToArabic converts a Roman number to an Arabic number
 func ConvertToArabic(roman string) int {
 	total := 0
+
+	for i := 0; i < len(roman); i++ {
+		symbol := roman[i]
+
+		if couldBeSubtractive(i, symbol, roman) {
+			if value := allRomanNumerals.ValueOf(symbol, roman[i+1]); value != 0 {
+				total += value
+				i++ // move past this character too for the next loop
+			} else {
+				total += allRomanNumerals.ValueOf(symbol)
+			}
+		} else {
+			total += allRomanNumerals.ValueOf(symbol)
+		}
+	}
 	return total
+}
+
+func couldBeSubtractive(index int, currentSymbol uint8, roman string) bool {
+	isSubtractiveSymbol := currentSymbol == 'I' || currentSymbol == 'X' || currentSymbol == 'C'
+	return index+1 < len(roman) && isSubtractiveSymbol
 }
