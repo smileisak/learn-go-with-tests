@@ -42,3 +42,5 @@ which would stop annoying developers and help you find bugs.
 1. <https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/roman-numerals>
 1. <https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/roman-numerals#write-the-test-first-7>
 1. <https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/roman-numerals#refactor-8>
+
+1. <https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/math#refactor-4>
