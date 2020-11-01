@@ -21,6 +21,13 @@ which would stop annoying developers and help you find bugs.
     1. How to create errors that are constants
     1. Writing error wrappers
 
+### Http Server
+
+1. Implement this interface to create web servers
+1. Use http.HandlerFunc to turn ordinary functions into http.Handlers
+1. Use httptest.NewRecorder to pass in as a ResponseWriter to let you spy on the responses your handler sends
+1. Use http.NewRequest to construct the requests you expect to come in to your system
+
 ## Progression (Breakpoints)
 
 1. <https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world#writing-tests>
